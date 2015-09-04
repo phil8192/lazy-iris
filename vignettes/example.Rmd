@@ -30,13 +30,11 @@ is installed and then install directly from the package github
 [repository](https://github.com/phil8192/lazy-iris).
 
 ```{r}
-# check for and install devtools.
-if(!("devtools" %in% rownames(installed.packages())))
-  install.packages("devtools")
+## check for and install devtools.
+# install.packages("devtools")
 
 # install and load.
-if(!("lazyIris" %in% rownames(installed.packages())))
-  devtools::install_github("phil8192/lazy-iris")
+# devtools::install_github("phil8192/lazy-iris")
 require(lazyIris)
 ```
 

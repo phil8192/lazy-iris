@@ -1,6 +1,6 @@
 Package: lazyIris 
-Title: Lazy learning on the iris dataset
-Description: k-nn applied to iris dataset with visualisations.
+Title: Lazy Learning on the Iris Dataset 
+Description: K-NN applied to iris dataset with visualisations.
 Author: Phil
 Maintainer: Phil <phil@parasec.net>
 Date: 2015-09-04
