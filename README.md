@@ -13,6 +13,9 @@ devtools::install_github("phil8192/lazy-iris")
 
 ## Documentation
 
-Examples: inst/doc/example.html and inst/doc/example.pdf
-Manual: inst/doc/lazyIris.pdf
+### Examples
+https://github.com/phil8192/lazy-iris/blob/master/inst/doc/example.pdf
+
+### Manual
+https://github.com/phil8192/lazy-iris/blob/master/inst/doc/lazyIris-manual.pdf
 
