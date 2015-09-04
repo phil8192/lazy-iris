@@ -15,9 +15,17 @@ devtools::install_github("phil8192/lazy-iris")
 
 ## Documentation
 
-### Examples
-https://github.com/phil8192/lazy-iris/blob/master/inst/doc/example.pdf
+Example use documentation has been created in R Markdown (see vignettes) 
+directory. [knitr](https://github.com/yihui/knitr) is used to generate 
+vignettes. [roxygen2](https://github.com/klutometis/roxygen) is used to 
+generate the pdf manual from code comments.
 
-### Manual
+### Example use of lazyIris package (html) 
+http://parasec.net/transmission/lazy-iris/example.html
+
+### Example use (pdf)
+http://parasec.net/transmission/lazy-iris/example.pdf
+
+### PDF Manual documenting package functions
 https://github.com/phil8192/lazy-iris/blob/master/inst/doc/lazyIris-manual.pdf
 
