@@ -26,7 +26,7 @@ http://parasec.net/transmission/lazy-iris/example.html
 http://parasec.net/transmission/lazy-iris/example.pdf
 
 ### Manual 
-https://github.com/phil8192/lazy-iris/blob/master/inst/doc/lazyIris-manual.pdf
+http://parasec.net/transmission/lazy-iris/lazyIris-manual.pdf
 
 ## Development notes
 
