@@ -1,5 +1,7 @@
 # lazyIris
 
+[![Build Status](https://travis-ci.org/phil8192/lazy-iris.svg?branch=master)](https://travis-ci.org/phil8192/lazy-iris)
+
 K-Nearest neighbours implementation.
 
 (Experimenting with R packaging.)
