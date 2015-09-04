@@ -1,8 +1,8 @@
-# lazyIris
+!["iris versicolor"](https://raw.githubusercontent.com/phil8192/lazy-iris/master/versicolor.png "iris versicolor") # lazyIris
 
 [![Build Status](https://travis-ci.org/phil8192/lazy-iris.svg?branch=master)](https://travis-ci.org/phil8192/lazy-iris) [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
 
-!["iris versicolor"](https://raw.githubusercontent.com/phil8192/lazy-iris/master/versicolor.png "iris versicolor") K-Nearest neighbours implementation. (Experimenting with R packaging.)
+K-Nearest neighbours implementation. (Experimenting with R packaging.)
 
 ## Installation
 
@@ -32,7 +32,7 @@ https://github.com/phil8192/lazy-iris/blob/master/inst/doc/lazyIris-manual.pdf
 ### Generating pdf+html vignettes:
 
 ```bash
-R -e 'rmarkdown::render("lazy-iris/vignettes/example.Rmd", "all", output_dir="/tmp/doc")'
+R -e 'rmarkdown::render("lazy-iris/vignettes/example.Rmd","all",output_dir="/tmp")'
 ```
 
 ### Building and checking src
