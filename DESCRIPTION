@@ -1,0 +1,14 @@
+Package: lazyIris 
+Title: Lazy learning on the iris dataset
+Description: k-nn applied to iris dataset with visualisations.
+Author: Phil
+Maintainer: Phil <phil@parasec.net>
+Date: 2015-09-04
+Version: 0.1.0
+URL: https://github.com/phil8192/lazy-iris
+License: GPL (>= 2)
+Depends: R (>= 3.0.0)
+Suggests: knitr
+LazyData: true
+VignetteBuilder: knitr
+
