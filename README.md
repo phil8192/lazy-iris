@@ -30,13 +30,13 @@ http://parasec.net/transmission/lazy-iris/lazyIris-manual.pdf
 
 ## Development notes
 
-### Generating pdf+html vignettes:
+#### Generating pdf+html vignettes:
 
 ```bash
 R -e 'rmarkdown::render("lazy-iris/vignettes/example.Rmd","all",output_dir="/tmp")'
 ```
 
-### Building and checking src
+#### Building and checking src
 ```bash
 cd lazy-iris
 R -e 'devtools::document()' # roxygen2

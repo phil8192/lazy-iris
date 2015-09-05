@@ -18,7 +18,7 @@ vignette: >
 ```{r, include=FALSE}
 options(digits.secs=3)
 library(lazyIris)
-knitr::opts_chunk$set(dpi=100, fig.width=10, fig.height=6)
+knitr::opts_chunk$set(dpi=100, fig.width=10, fig.height=10)
 ```
 # Overview 
 _lazyIris_ is a small implementation of k-nearest neighbours applied to the 
@@ -128,34 +128,107 @@ from the query point. This distance can be used to predict the most likely
 class of the query point using the _classifier_ function.
 
 ```{r}
-query <- list(sepal.length=5.84, sepal.width=3.05, 
-              petal.length=3.76, petal.width=1.20)
-top.10 <- knn(query, iris.data, k=10)
 prediction <- classifier(top.10$species, top.10$distance)
 print(paste("prediction =", prediction$pred,
             "confidence =", prediction$conf))
 ```
 
-## Visualising a query result
+## Visualising a query result for Versicolour (green)
 
 Given a list of nearest neighbours returned from the _knn_ function, it is 
 possible to visualise the query point and it's nearest neighbours over all 
 dimensions in the feature space by using the _visualise_ function.
 
 ```{r}
-# form the query and obtain the nearest neighbours.
-q <- list(sepal.length=5.84, sepal.width=3.05,
-          petal.length=3.76, petal.width=1.20)
-top.10 <- knn(query, iris.data, k=10)
-
 # visualise the result.
-visualise(iris.data, class.name="species", query=q, neighbours=top.10,
-    main="iris data neighbours", plot.hist=TRUE, plot.cor=FALSE)
+visualise(iris.data, class.name="species", query=query, neighbours=top.10,
+    main="iris versicolour classification", plot.hist=TRUE, plot.cor=FALSE)
 ```
 
 In the above plot, the query point is shown as a black point. The resulting 
-neighbours from the _knn_ query are highlighted (opaque) circles. In addition,
-the query point with respect to the distribution of features has been 
-highlighted with a black dashed vertical line over the corresponding feature
-histograms.
+neighbours from the _knn_ query are highlighted (opaque) circles. 
+
+In addition, the query point with respect to the distribution of features has 
+been highlighted with a black dashed vertical line over the corresponding 
+feature histograms. Clearly the query point is within the Iris versicolour 
+cluster (green).  
+
+## Versicolour or Virginica (green/blue)
+
+Closer to a decision boundary (which is non-linear for iris data), the class to
+which the query point belongs to is ambiguous:
+
+```{r}
+q <- list(sepal.length=6, sepal.width=3, petal.length=4.75, petal.width=1.75)
+top.10 <- knn(q, iris.data, k=10)
+visualise(iris.data, class.name="species", query=q, neighbours=top.10,
+    main="iris versicolour/virginica", plot.hist=TRUE, plot.cor=FALSE)
+```
+
+From the _top 10 results_:
+
+```{r, results="hide"}
+print(top.10, row.names=F)
+```
+
+```{r, echo=F, results="markup"}
+knitr::kable(top.10, row.names=F)
+```
+
+The 10 (unweighted) neighbours yield a 50/50 classification:
+
+```{r}
+prediction <- with(knn(q, iris.data, k=10), classifier(species, distance))
+with(prediction, paste0("prediction = ", pred, " confidence = ", conf*100, "%"))
+```
+
+## A very peculiar iris...
+
+A rare iris was discovered. It had petals as large as an iris versicolor, and 
+a stem the size of a setosa...
+
+```{r, results="hide"}
+# construct query as the mean iris setosa type. 
+q <- as.list(colMeans(iris.data[iris.data$species == "Iris-setosa", 1:4]))
+q$petal.width <- 4*q$petal.width
+q$petal.length <- 1.75*q$petal.length
+print(unlist(q))
+```
+
+```{r, echo=F, results="markup"}
+knitr::kable(as.data.frame(q))
+```
+
+Given the 10 nearest known neighbours to the disovery:
+
+```{r, results="hide"}
+top.10 <- knn(q, iris.data, k=10)
+print(top.10, row.names=F)
+```
+
+```{r, echo=F, results="markup"}
+knitr::kable(top.10, row.names=F)
+```
+
+The discovery is a most likely (90% by majority voting) _setosa_...
+
+```{r, results="hide"}
+unlist(classifier(top.10$species, top.10$distance))
+```
+
+```{r, echo=F, results="markup"}
+knitr::kable(as.data.frame(classifier(top.10$species, top.10$distance)))
+```
+
+Which can be seen in the following visualisation...
+
+
+```{r}
+visualise(iris.data, class.name="species", query=q, neighbours=top.10, 
+    main="neighbours of the peculiar iris", plot.hist=TRUE, plot.cor=FALSE)
+```
+
+In the interest of 
+[sampling bias](https://en.wikipedia.org/wiki/Selection_bias), The discovery was 
+hastily discarded.
 
